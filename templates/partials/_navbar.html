@@ -1,0 +1,44 @@
+{% load static %}
+<div class="container-fluid h-100">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav class="navbar navbar-expand-lg navbar-light nav-bg fixed-top">
+                <a class="navbar-brand" href="#">Marvex IMS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    {% if request.user.is_authenticated %}
+                    <ul class="navbar-nav mr-auto">
+                        &nbsp;<li class="nav-item active">
+                            <a class="nav-link btn-light" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>&nbsp;&nbsp;
+                        <li class="nav-item active">
+                            <a class="nav-link btn-light" href="{% url 'product' %}">Product</a>
+                        </li>&nbsp;&nbsp;
+                        <li class="nav-item active">
+                            <a class="nav-link btn-light" href="{% url 'category' %}">Category</a>
+                        </li>&nbsp;&nbsp;
+                        <li class="nav-item active">
+                            <a class="nav-link btn-light" href="{% url 'brand' %}">Brands</a>
+                        </li>&nbsp;&nbsp;
+                        <li class="nav-item active">
+                            <a class="nav-link btn-light" href="{% url 'reports' %}">Reports</a>
+                        </li>&nbsp;&nbsp;
+                        <li class="nav-item active">
+                            <a class="nav-link btn-light" href="{% url 'task_list' %}">Todo</a>
+                        </li>&nbsp;&nbsp;
+                    {% endif %}
+                    </ul>
+                    <ul class="navbar-nav">
+                        {% if request.user.is_authenticated %}
+                        <li><a href="logout"><button class="btn btn-info">{{ user }} | Logout</button></a></li>
+                        {% else %}
+                        <li><a href="login"></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

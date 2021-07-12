@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br><br><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <b><li {% if message.tags %} class="{{ message.tags }}"{% endif %} style="background-color: #80ceeb; color:black; text-align:center; list-style: none; box-shadow:12px 12px 12px #1cc8e6">{{ message }}</li></b>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Upload file</label>
+        <input type="file" name="file">
+
+        <input type="submit" value='Upload' class=" btn btn-success" style="border-radius: 5px;"/>
+            
+
+    </form>
+</div>
+{% endblock %}

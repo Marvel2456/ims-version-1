@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br><br><br>
+<div class="container-fluid">   
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Are you sure you want to delete?</h1><br>
+        <input type="submit" value='Yes' class="btn btn-danger" style="border-radius: 5px;"/>
+        <a href="{% url 'index' %}"><div class="btn btn-success">No</div></a>
+            
+
+    </form>
+</div>
+{% endblock %}

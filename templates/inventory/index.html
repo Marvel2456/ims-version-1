@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" style="text-align: center;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            
+            <div class="col-sm-4 form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {{form|crispy}}
+            
+                    <input type="submit" value='Search/Download' class="btn btn-primary" style="border-radius: 5px;"/>
+                </form>
+            </div>
+            <br><br>
+            <table class="table table-bordered table-hover">
+                <thead class="">
+                        <tr>
+                            <th scope="col-sm-12">id</th>
+                            <th scope="col-sm-12">Product</th>
+                            <th scope="col-sm-12">Category</th>
+                            <th scope="col-sm-12">Quantity</th>
+                            <th scope="col-sm-12">Time Stamp</th>
+                        </tr>
+                    </thead>
+                    {% for product in product %}
+                    <tbody>
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{product.Item_name}}</td>
+                            <td>{{product.category}}</td>
+                            <td>{{product.quantity}}</td>
+                            <td>{{product.timestamp}}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}

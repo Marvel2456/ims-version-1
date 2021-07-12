@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br>
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div class="row">
+            <p><a href="{%  url 'add_sale' product.id %}" class="btn btn-success">ADD SALES</a></p>
+            &nbsp;
+            <p><a href="{%  url 'add_stock' product.id %}" class="btn btn-danger">RESTOCK</a></p>
+            &nbsp;
+            <p><a href="{%  url 'reorder_level' product.id %}" class="btn btn-primary">REORDER LEVEL</a></p>
+            &nbsp;
+            <p><a href="{%  url 'add_count' product.id %}" class="btn btn-warning">ADD COUNT</a></p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-hover">
+                <thead class="">
+                        <tr>
+                            <th scope="col-sm-12">Name</th>
+                            <th scope="col-sm-12">Quantity</th>
+                            <th scope="col-sm-12">Last Updated</th>
+                            <th scope="col-sm-12">Reorder Level</th>
+                            <th scope="col-sm-12">Quantity Restoked</th>
+                        </tr>
+                    </thead>
+                    {% if product %}
+                    <tbody>
+                        <tr>
+                            <td>{{product.Item_name}}</td>
+                            <td>{{product.quantity}}</td>
+                            <td>{{product.last_updated}}</td>
+                            <td>{{product.reorder_level}}</td>
+                            <td>{{product.quantity_restoked}}</td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+            </table>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}
